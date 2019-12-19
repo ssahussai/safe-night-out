@@ -5,7 +5,7 @@ Created By | Last Updated
 Salma Khan | December 19, 2019
 Alban       |
 Alex        | 
-Gerardo     | December 19, 2019
+Gerardo     | December 19, 2019, 2nd 
 
 ## User Stories 
 
