@@ -14,5 +14,3 @@ Python Django......
 
 
 ## Link to the deployed app
-
-
