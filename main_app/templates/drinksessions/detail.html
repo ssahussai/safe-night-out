@@ -2,5 +2,12 @@
 {% block content %}
 
 <h1>Drink Sessions Details</h1>
-
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ session.user }}</span>
+        <p>Duration: {{ session.duration }}</p>
+        <p>Start Time: {{ session.start_time }}</p>
+        <p>Drink: {{session.drinks}}</p>
+    </div>
+</div>
 {% endblock %}

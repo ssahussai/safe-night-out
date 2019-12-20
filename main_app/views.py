@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import DrinkSession
+from .models import DrinkSession, Drink, Profile
 
 # Create your views here.
 def home(request):
@@ -24,7 +24,7 @@ def signup(request):
 
 def drinksession_index(request):
   session = DrinkSession.objects.all()
-  return render(request, 'drinksessions/index.html', {'session':session})
+  return render(request, 'drinksessions/index.html', {'session':session, 'drink':drink})
 
 def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {'session': DrinkSession.objects.get(id=session_id) })

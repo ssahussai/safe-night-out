@@ -7,10 +7,10 @@
   <a href="{% url 'detail' s.id %}">
     <div class="card">
         <div class="card-content">
-            <span class="card-title">{{ session.user }}</span>
-            <p>Duration: {{ session.duration }}</p>
-            <p>Start Time: {{ session.start_time }}</p>
-            <p>Drinks: {{session.drinks}}</p>    
+            <span class="card-title">{{ s.user }}</span>
+            <p>Duration: {{ s.duration }}</p>
+            <p>Start Time: {{ s.start_time }}</p>
+            <p>Drink: {{s.drinks}}</p>
         </div>
     </div>
   </a>
