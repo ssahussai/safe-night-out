@@ -24,7 +24,7 @@ def signup(request):
 
 def drinksession_index(request):
   session = DrinkSession.objects.all()
-  return render(request, 'drinksessions/index.html', {'session':session, 'drink':drink})
+  return render(request, 'drinksessions/index.html', {'session':session})
 
 def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {'session': DrinkSession.objects.get(id=session_id) })
