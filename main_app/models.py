@@ -51,7 +51,7 @@ class DrinkSession(models.Model):
     # Calculation based on drinks and time 
 
   def __str__(self):
-    return f"drinking on {self.start_time} at {self.location}"
+    return f"drinking on {self.start_time}"
 
 
 class Photo(models.Model):
