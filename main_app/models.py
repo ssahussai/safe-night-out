@@ -40,7 +40,7 @@ class Drink(models.Model):
   # def __save___(self):
 
   def __str__(self):
-    return f"{name}"
+    return f"{self.name}"
 
 class DrinkSession(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
