@@ -2,10 +2,10 @@
 
 Created By | Last Updated
 -----------|--------------
-Salma Khan | December 19, 2019
-Alban Xhaferllari | December 19, 2019
-Alex Perkowski | December 19, 2019
-Gerardo Mendoza | December 19, 2019
+Salma Khan | December 20, 2019
+Alban Xhaferllari | December 20, 2019
+Alex Perkowski | December 20, 2019
+Gerardo Mendoza | December 20, 2019
 
 ## User Stories 
 * As a user (AAU), when I land in the app I should be able to see a navigation bar with all the options.
