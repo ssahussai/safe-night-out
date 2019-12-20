@@ -23,7 +23,8 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 def drinksession_index(request):
-  return render(request, 'drinksessions/index.html')
+  session = DrinkSession.objects.all()
+  return render(request, 'drinksessions/index.html', {'session':session})
 
 def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {'session': DrinkSession.objects.get(id=session_id) })

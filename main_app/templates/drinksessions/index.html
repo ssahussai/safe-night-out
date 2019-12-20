@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Drink Sessions List</h1>
+<h1>Session List</h1>
+
+{% for s in session %}
+  <a href="{% url 'detail' s.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ session.user }}</span>
+            <p>Duration: {{ session.duration }}</p>
+            <p>Start Time: {{ session.start_time }}</p>
+            <p>Drinks: {{session.drinks}}</p>    
+        </div>
+    </div>
+  </a>
+{% endfor %}
 
 {% endblock %}
