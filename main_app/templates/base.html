@@ -25,11 +25,11 @@
             <li><a href="">Create Drink</a></li>
             <li><a href="">Current Night</a></li>
             <li><a href="">View Previous Nights</a></li>
-            <li><a href="">Drink Sessions</a></li>
-            <li><a href="">Log Out</a></li>
+            <li><a href="{% url 'index' %}">Drink Sessions</a></li>
+            <li><a href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="">Log In</a></li>
+            <li><a href="{% url 'login'%}">Log In</a></li>
           {% endif %}
         </ul>
       </div>

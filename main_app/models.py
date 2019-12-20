@@ -52,7 +52,7 @@ class DrinkSession(models.Model):
     # Calculation based on drinks and time 
 
   def __str__(self):
-    return f"drinking on {self.start_time} at {self.location}"
+    return f"drinking on {self.start_time}"
   
   def get_absolute_url(self):
     return reverse('detail', kwargs={'session_id': self.id})
