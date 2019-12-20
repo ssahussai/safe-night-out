@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 
@@ -39,7 +40,7 @@ class Drink(models.Model):
   # def __save___(self):
 
   def __str__(self):
-    return f"{name}"
+    return f"{self.name}"
 
 class DrinkSession(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -52,6 +53,9 @@ class DrinkSession(models.Model):
 
   def __str__(self):
     return f"drinking on {self.start_time} at {self.location}"
+  
+  def get_absolute_url(self):
+    return reverse('detail', kwargs={'session_id': self.id})
 
 
 class Photo(models.Model):
