@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
+
+{% extends 'base.html' %}
+{% block content %}
     <h1>Welcome to Safe Night Out</h1>
     <a href="">sign in</a>
     <a href="">sign out</a>
     <a href="{% url 'signup' %}">sign up</a>
-</body>
-</html>
+
+{% endblock %}
