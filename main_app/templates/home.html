@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-
     <div class="card small">
         <div class="card-content">
             <h1 class = "activator blue-text text-darken-4 center">Safe Night Out</h1>
         </div>
         <div class = "card-content center">
             {% if user.is_authenticated %}
-            <a href="" class='btn-large waves-effect waves-light' type='submit' name='action'><i
-                class="material-icons right">vpn_key</i>Sign In</a>
+            <a href="/drinksessions" class='btn-large waves-effect waves-light blue darken-4' type='submit' name='action'><i
+                class="material-icons right">vpn_key</i>Welcome back, {{ user.username }}</a>
                 {% else %}
             <button class='btn-large waves-effect activator waves-light' type='submit' name='action'><i
                 class="material-icons right">remove_red_eye</i>View Disclaimer to Create Account</button>
@@ -41,6 +40,8 @@
                 {% endif%}
             </div>
         </div>
+        
 </div>
+
 
 {% endblock %}
