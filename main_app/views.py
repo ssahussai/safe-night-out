@@ -22,7 +22,8 @@ class DrinksessionDelete(DeleteView):
   success_url = '/drinksessions/'
 
 def home(request):
-    return render(request, 'home.html')
+    p = Profile.objects.all()
+    return render(request, 'home.html', {'profile':p})
 
 def signup(request):
   error_message = ''
