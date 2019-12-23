@@ -25,6 +25,10 @@ def home(request):
     p = Profile.objects.all()
     return render(request, 'home.html', {'profile':p})
 
+# about page
+def about(request):
+  return render(request, 'about.html')
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':

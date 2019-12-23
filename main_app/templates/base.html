@@ -20,7 +20,7 @@
           <li><a href="/" class="left brand-logo"><i class = "material-icons right">local_drink</i></a></li>
         </ul>
         <ul class="right">
-          <li><a href="">About</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
             <li><a href="">Create Drink</a></li>
             <li><a href="">Current Night</a></li>
