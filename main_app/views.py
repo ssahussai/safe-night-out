@@ -5,6 +5,22 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import DrinkSession, Drink, Profile
 
 # Create your views here.
+class DrinksessionCreate(CreateView):
+  model = DrinkSession
+  fields = ['start_time', 'duration']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+class DrinksessionUpdate(UpdateView):
+  model = DrinkSession
+  fields = ['start_time']
+
+class DrinksessionDelete(DeleteView):
+  model = DrinkSession
+  success_url = '/drinksessions/'
+
 def home(request):
     return render(request, 'home.html')
 
@@ -28,19 +44,3 @@ def drinksession_index(request):
 
 def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {'session': DrinkSession.objects.get(id=session_id) })
-
-class DrinksessionCreate(CreateView):
-  model = DrinkSession
-  fields = ['start_time', 'duration']
-
-  def form_valid(self, form):
-    form.instance.user = self.request.user
-    return super().form_valid(form)
-
-class DrinksessionUpdate(UpdateView):
-  model = DrinkSession
-  fields = ['start_time']
-
-class DrinksessionDelete(DeleteView):
-  model = DrinkSession
-  success_url = '/drinksessions/'
