@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from .models import DrinkSession, Drink, Profile
 
 # Create your views here.
@@ -45,3 +46,15 @@ def drinksession_index(request):
 
 def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {'session': DrinkSession.objects.get(id=session_id) })
+
+class DrinkCreate(CreateView):
+  model = Drink
+
+class DrinkDelete(DeleteView):
+  model = Drink
+  success_url = '/drinks/' # maybe drink session, maybe we remove drink delete
+
+class DrinkUpdate(UpdateView):
+  model = Drink
+  fields = ['cost','time_consumed','effects']
+
