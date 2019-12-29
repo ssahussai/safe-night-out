@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Session List</h1>
+<h1 class = 'center blue-text text-darken-4'>Session List</h1>
 
-<div>
-  <a class= 'btn-large blue darken-4 waves-effect waves-light' href="{% url 'drinksessions_create' %}">Add a Session?</a>
-</div>
-
+<br>
 {% for s in session %}
+<div>
   <a href="{% url 'detail' s.id %}">
     <div class="card">
         <div class="card-content">
@@ -19,6 +17,12 @@
         </div>
     </div>
   </a>
+  <br>
+
+
+<div class = 'center'>
+  <a class= 'btn-large blue darken-4 waves-effect waves-light' href="{% url 'drinksessions_create' %}">Add a Session?</a>
+</div>
 
 
 {% endfor %}
