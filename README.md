@@ -4,8 +4,8 @@ Created By | Last Updated
 -----------|--------------
 Salma Khan | December 23, 2019
 Alban Xhaferllari | December 20, 2019
-Alex Perkowski | December 22, 2019
-Gerardo Mendoza | December 21, 2019
+Alex Perkowski | December 29, 2019
+Gerardo Mendoza | December 28, 2019
 
 ## User Stories 
 * As a user (AAU), when I land in the app I should be able to see an option ether to Sign Up or Log In. 
