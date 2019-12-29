@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Drink Sessions Details</h1>
+<h1 class = "center blue-text text-darken-4">Drink Sessions Details</h1>
 <div class="row">
     <div class="col s6">
         <div class="card">
@@ -9,11 +9,14 @@
                 <span class="card-title">{{ session.user }}</span>
                 <p>Duration: {{ session.duration }}</p>
                 <p>Start Time: {{ session.start_time }}</p>
-                <p>Drink: {{session.drinks}}</p>
+                <br>
+                <br>
+                <div class = 'center row'>
                 <a class='btn-large yellow darken-2 waves-effect waves-light'
                     href="{% url 'drinksessions_update' session.id %}">Update Session</a>
                 <a class='btn-large red darken-2 waves-effect waves-light'
                     href="{% url 'drinksessions_delete' session.id %}">Delete Session</a>
+                </div>
             </div>
         </div>
     </div>
