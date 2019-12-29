@@ -24,7 +24,6 @@
           {% if user.is_authenticated %}
             <li><a href="{% url 'drinks_create' %}">Create Drink</a></li>
             <li><a href="">Current Night</a></li>
-            <li><a href="">View Previous Nights</a></li>
             <li><a href="{% url 'index' %}">Drink Sessions</a></li>
             <li><a href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
