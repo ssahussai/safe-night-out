@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import DrinkTime, Drink
+from .models import DrinkTime, Drink, DrinkSession
 
 class DrinkTimeForm(ModelForm):
   class Meta:

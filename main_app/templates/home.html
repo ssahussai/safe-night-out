@@ -1,18 +1,53 @@
 {% extends 'base.html' %}
 {% block content %}
-<br>
-<div>
-    <h1 class = "blue-text text-darken-4 center">Safe Night Out</h1>
-    <ul class = "blue-text text-darken-4">
-        <li><i class="material-icons">done</i>Track what you drink in real time.</li>
-        <li><i class="material-icons">done</i>Estimate your BAC.</li>
-        <li><i class="material-icons">done</i>Explore safer options.</li>
-        <li><i class="material-icons">done</i>Understand consequences.</li>
-        <li><i class="material-icons">done</i>Build healthy drinking habits.</li>
-        <br>
-        <li><i class="material-icons">home</i>Have a Safe Night Out.</li>
+<script>
+$(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+</script>
+<h1 class = 'center blue-text text-darken-4'>Welcome to Safe Night Out</h1>
+
+<br>  
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="https://i.imgur.com/LIJAINm.png"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Estimate your BAC.</h3>
+          <h5 class="light grey-text text-lighten-3">Use our application to calculate an approximate Blood Alcohol Content level.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/BCP0flP.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Explore safer options.</h3>
+          <h5 class="light grey-text text-lighten-3">Select and view Safe Methods for Getting Home.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/MEwBO0r.png"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Understand consequences.</h3>
+          <h5 class="light grey-text text-lighten-3">View alcohol-related laws in your area.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/0wSg30D.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Build healthy drinking habits.</h3>
+          <h5 class="light grey-text text-lighten-3">Understand when you've had too much and track your past nights.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/nhKd1dD.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">home</i> Have a Safe Night Out.</h3>
+          <h5 class="light grey-text text-lighten-3">Use our application to drink responsibly and get home safely..</h5>
+        </div>
+      </li>
     </ul>
-</div>
+  </div>
+    
 
 <br>
 <div class="card small">
@@ -24,8 +59,8 @@
         <a href="/drinksessions" class='btn-large waves-effect waves-light blue darken-4' type='submit' name='action'><i
                 class="material-icons right">vpn_key</i>Welcome back, {{ user.username }}</a>
         {% else %}
-        <button class='btn-large waves-effect activator waves-light' type='submit' name='action'><i
-                class="material-icons right">remove_red_eye</i>View Disclaimer to Create Account</button>
+        <button class='btn-large waves-effect activator waves-light yellow darken-4 pulse' type='submit'
+            name='action'><i class="material-icons right">remove_red_eye</i>View Disclaimer to Create Account</button>
         {% endif %}
     </div>
     <div class="card-reveal">
@@ -49,9 +84,10 @@
             {% if user.is_authenticated %}
             <a href="">Log Out</a>
             {% else %}
-            <a href="" class='btn-large waves-effect waves-light' type='submit' name='action'><i
-                    class="material-icons right">vpn_key</i>Sign In</a>
-            <a href="{% url 'signup' %}" class='btn-large waves-effect waves-light' type='submit' name='action'>Create
+            <a href="{% url 'login' %}" class='btn-large waves-effect waves-light yellow darken-4' type='submit'
+                name='action'><i class="material-icons right">vpn_key</i>Sign In</a>
+            <a href="{% url 'signup' %}" class='btn-large waves-effect waves-light yellow darken-4' type='submit'
+                name='action'>Create
                 an Account<i class="material-icons right">lock</i></a>
             {% endif%}
         </div>
