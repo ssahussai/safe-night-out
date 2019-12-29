@@ -61,7 +61,7 @@ class DrinkCreate(CreateView):
 
 class DrinkDelete(DeleteView):
   model = Drink
-  success_url = '/drinks/' # maybe drink session, maybe we remove drink delete
+  success_url = '/drinksessions/detail.html' # maybe drink session, maybe we remove drink delete
 
 class DrinkUpdate(UpdateView):
   model = Drink
