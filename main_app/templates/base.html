@@ -28,6 +28,7 @@
             <li><a href="{% url 'index' %}">Drink Sessions</a></li>
             <li><a href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
+          <li><a href="{% url 'login'%}"><i class= 'material-icons right'>vpn_key</i>Log In</a></li>
           {% endif %}
         </ul>
       </div>
