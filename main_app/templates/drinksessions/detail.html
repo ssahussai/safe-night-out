@@ -23,16 +23,16 @@
     </div>
     <div class="col s6">
         <h5 class = 'center'>Add Drink</h5>
-        <form action="" method="post">
+        <form action="{% url 'add_drink_time' session.id %}" method="post">
             {% csrf_token %}
             {{ drink_time_form.as_p }}
-            <input type="submit" class="btn-large" value="Add Drink">
+            <input type="submit" class="btn-large" value="Add Drink Event">
         </form>
     </div>
 </div>
 
 <script>
-    // initialize the meal select
+    // initialize the drink select
     var selectEl = document.getElementById('id_drink');
     M.FormSelect.init(selectEl);
 </script>
