@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Drink Detail</h1>
+
+<div class="row">
+    <div class="col s6 col-offset-3">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ drink.name }}</span>
+          <p>Type: {{ drink.drink_type }}</p>
+          <p>ABV: {{ drink.abv }}</p>
+          <p>Cost: {{ drink.cost }}</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'drinks_update' drink.id %}">Edit</a>
+          <a href="{% url 'drinks_delete' drink.id %}">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
