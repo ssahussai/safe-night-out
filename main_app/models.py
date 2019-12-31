@@ -42,7 +42,7 @@ class Drink(models.Model):
 
 class DrinkSession(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
-  start_time = models.DateTimeField()
+  start_time = models.DateField()
   duration = models.IntegerField() # should this be integer field?? or maybe even calculated
 
   # def calc_bac(self):
@@ -55,7 +55,7 @@ class DrinkSession(models.Model):
     return reverse('detail', kwargs={'session_id': self.id})
 
 class DrinkTime(models.Model):
-  time_consumed = models.DateTimeField()
+  time_consumed = models.TimeField()
   effects = models.CharField(max_length=300)
   drink = models.ForeignKey(Drink,on_delete=models.CASCADE)
   session = models.ForeignKey(DrinkSession,on_delete=models.CASCADE)

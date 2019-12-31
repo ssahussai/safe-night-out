@@ -4,8 +4,8 @@ Created By | Last Updated
 -----------|--------------
 Salma Khan | December 31, 2019
 Alban Xhaferllari | December 20, 2019
-Alex Perkowski | December 22, 2019
-Gerardo Mendoza | December 21, 2019
+Alex Perkowski | December 29, 2019
+Gerardo Mendoza | December 28, 2019
 
 ## User Stories 
 * As a user (AAU), when I land in the app I should be able to see an option ether to Sign Up or Log In. 
@@ -21,6 +21,10 @@ Gerardo Mendoza | December 21, 2019
 * Python
 * PostgreSQL
 * Template Inheritance (Partials)
+* Amazong Web Services(AWS)
+* Django Authentication
+* Materialize CSS Framework
+
 
 ## Link to the deployed app
 

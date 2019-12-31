@@ -58,6 +58,7 @@ def drinksession_detail(request, session_id):
 
 class DrinkCreate(CreateView):
   model = Drink
+  fields = '__all__'
 
 class DrinkDelete(DeleteView):
   model = Drink
@@ -65,7 +66,16 @@ class DrinkDelete(DeleteView):
 
 class DrinkUpdate(UpdateView):
   model = Drink
-  fields = ['cost','time_consumed','effects']
+  fields = ['cost','abv','drink_type']
 
-# def add_drink_time(request, session_id):
-#   pass
+class DrinkList(ListView):
+  model = Drink
+
+class DrinkDetail(DetailView):
+  model = Drink
+
+
+def add_drink_time(request, session_id):
+  
+  
+  pass
