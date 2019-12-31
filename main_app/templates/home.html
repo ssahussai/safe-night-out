@@ -1,46 +1,98 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="card small">
-        <div class="card-content">
-            <h1 class = "activator blue-text text-darken-4 center">Safe Night Out</h1>
-        </div>
-        <div class = "card-content center">
-            {% if user.is_authenticated %}
-            <a href="/drinksessions" class='btn-large waves-effect waves-light blue darken-4' type='submit' name='action'><i
-                class="material-icons right">vpn_key</i>Welcome back, {{ user.username }}</a>
-                {% else %}
-            <button class='btn-large waves-effect activator waves-light' type='submit' name='action'><i
-                class="material-icons right">remove_red_eye</i>View Disclaimer to Create Account</button>
-                {% endif %}
-        </div>
-        <div class="card-reveal">
-            <span class="card-title blue-text text-darken-4 center">Disclaimer<i class="material-icons right">close</i></span>
-            <p>The Site Does Not Provide Medical Advice
-                The contents of the Safe Night Out Site, such as text, graphics, images, and other materials created
-                by Safe Night Out or obtained from Safe Night Out's licensors, and other materials contained on the
-                Safe Night Out Site (collectively, "Content") are for informational purposes only. The Content is
-                not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always
-                seek the advice of your physician or other qualified health provider with any questions you may have
-                regarding a medical condition. Never disregard professional medical advice or delay in seeking it
-                because of something you have read on the Safe Night Out Site!
+<script>
+$(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+</script>
+<h1 class = 'center blue-text text-darken-4'>Welcome to Safe Night Out</h1>
 
-                If you think you may have a medical emergency, call your doctor or 911 immediately. Safe Night Out
-                does not recommend or endorse any specific tests, physicians, products, procedures, opinions, or
-                other information that may be mentioned on the Site. Reliance on any information provided by Safe
-                Night Out, Safe Night Out employees, others appearing on the Site at the invitation of Safe Night
-                Out, or other visitors to the Site is solely at your own risk.</p>
-            <div class='center'>
-                {% if user.is_authenticated %}
-                <a href="">Log Out</a>
-                {% else %}
-                <a href="" class='btn-large waves-effect waves-light' type='submit' name='action'><i
-                        class="material-icons right">vpn_key</i>Sign In</a>
-                <a href="{% url 'signup' %}" class='btn-large waves-effect waves-light' type='submit'
-                    name='action'>Create an Account<i class="material-icons right">lock</i></a>
-                {% endif%}
-            </div>
+<br>  
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="https://i.imgur.com/LIJAINm.png"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Estimate your BAC.</h3>
+          <h5 class="light grey-text text-lighten-3">Use our application to calculate an approximate Blood Alcohol Content level.</h5>
         </div>
-        
+      </li>
+      <li>
+        <img src="https://i.imgur.com/BCP0flP.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Explore safer options.</h3>
+          <h5 class="light grey-text text-lighten-3">Select and view Safe Methods for Getting Home.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/MEwBO0r.png"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Understand consequences.</h3>
+          <h5 class="light grey-text text-lighten-3">View alcohol-related laws in your area.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/0wSg30D.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">done</i> Build healthy drinking habits.</h3>
+          <h5 class="light grey-text text-lighten-3">Understand when you've had too much and track your past nights.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://i.imgur.com/nhKd1dD.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3><i class="material-icons">home</i> Have a Safe Night Out.</h3>
+          <h5 class="light grey-text text-lighten-3">Use our application to drink responsibly and get home safely..</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+    
+
+<br>
+<div class="card small">
+    <div class="card-content">
+        <h1 class="activator blue-text text-darken-4 center">Get Started</h1>
+    </div>
+    <div class="card-content center">
+        {% if user.is_authenticated %}
+        <a href="/drinksessions" class='btn-large waves-effect waves-light blue darken-4' type='submit' name='action'><i
+                class="material-icons right">vpn_key</i>Welcome back, {{ user.username }}</a>
+        {% else %}
+        <button class='btn-large waves-effect activator waves-light yellow darken-4 pulse' type='submit'
+            name='action'><i class="material-icons right">remove_red_eye</i>View Disclaimer to Create Account</button>
+        {% endif %}
+    </div>
+    <div class="card-reveal">
+        <span class="card-title blue-text text-darken-4 center">Disclaimer<i
+                class="material-icons right">close</i></span>
+        <p>The Site Does Not Provide Medical Advice
+            The contents of the Safe Night Out Site, such as text, graphics, images, and other materials created
+            by Safe Night Out or obtained from Safe Night Out's licensors, and other materials contained on the
+            Safe Night Out Site (collectively, "Content") are for informational purposes only. The Content is
+            not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always
+            seek the advice of your physician or other qualified health provider with any questions you may have
+            regarding a medical condition. Never disregard professional medical advice or delay in seeking it
+            because of something you have read on the Safe Night Out Site!
+
+            If you think you may have a medical emergency, call your doctor or 911 immediately. Safe Night Out
+            does not recommend or endorse any specific tests, physicians, products, procedures, opinions, or
+            other information that may be mentioned on the Site. Reliance on any information provided by Safe
+            Night Out, Safe Night Out employees, others appearing on the Site at the invitation of Safe Night
+            Out, or other visitors to the Site is solely at your own risk.</p>
+        <div class='center'>
+            {% if user.is_authenticated %}
+            <a href="">Log Out</a>
+            {% else %}
+            <a href="{% url 'login' %}" class='btn-large waves-effect waves-light yellow darken-4' type='submit'
+                name='action'><i class="material-icons right">vpn_key</i>Sign In</a>
+            <a href="{% url 'signup' %}" class='btn-large waves-effect waves-light yellow darken-4' type='submit'
+                name='action'>Create
+                an Account<i class="material-icons right">lock</i></a>
+            {% endif%}
+        </div>
+    </div>
+
 </div>
 
 
