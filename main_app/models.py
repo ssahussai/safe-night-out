@@ -35,7 +35,8 @@ class Drink(models.Model):
   abv = models.IntegerField()  # default??? beer 5%, wine 12%, liquor 40%?
   cost = models.IntegerField()
 
-  # def __save___(self):
+  def get_absolute_url(self):
+    return reverse('drinks_detail', kwargs={'pk': self.id})
 
   def __str__(self):
     return f"{self.name}"
