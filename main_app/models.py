@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-
+import datetime
+import math
 
 # Create your models here.
 sexes = (
@@ -17,6 +18,8 @@ drinks = (
     ('C', 'cocktail'),
     ('S', 'spiked'),
 )
+
+bac_inteval = 15 # in minutes
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -46,7 +49,27 @@ class DrinkSession(models.Model):
   start_time = models.DateField()
   duration = models.IntegerField() # should this be integer field?? or maybe even calculated
 
-  # def calc_bac(self):
+  def calc_bac(self):
+    bac_dict = {}
+    
+    # get drink events, NOTE: sorted in order at drinktime model
+    drink_events = self.drinktime_set.all()
+    if drink_events:
+      first_dt = drink_events[0].time_consumed
+      starting_minute = math.floor(first_dt.minute % bac_inteval)*bac_inteval
+      start = drink_events[0].time_consumed.replace(second=0, minute=starting_minute)
+      print(start)
+      print(start.strftime('%X'))
+      bac_dict[start.strftime('%X')] = 0
+
+    # loop through drink events and add data to bac_dict
+      for d in drink_events:
+
+        print(d.time_consumed)
+
+
+
+    return bac_inteval
     # Calculation based on drinks and time 
 
   def __str__(self):
@@ -61,6 +84,8 @@ class DrinkTime(models.Model):
   drink = models.ForeignKey(Drink,on_delete=models.CASCADE)
   session = models.ForeignKey(DrinkSession,on_delete=models.CASCADE)
 
+  class Meta:
+    ordering = ['time_consumed']
 
 class Photo(models.Model):
   url = models.CharField(max_length=250)
