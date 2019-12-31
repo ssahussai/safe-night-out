@@ -14,7 +14,7 @@ Gerardo Mendoza | December 28, 2019
 * AAU, I want to add all my drinking sessions in a list.
 * AAU, I want to be able to add new drink session and be able to edit and delete it if I change my mind later on.   
 * AAU, I want to be able to create a drink. 
-* AAU, I want to be able to upload photos from my drinking sessions. 
+* AAU, I want to be able to upload photos from my drinking sessions. I want to see a "No Photos Uploaded" message if there are no images for the session.
 
 ## Technologies Used
 * Django
