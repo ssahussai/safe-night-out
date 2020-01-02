@@ -24,6 +24,8 @@ urlpatterns = [
     path('drinksession/<int:session_id>/add_drink/', views.add_drink_time, name='add_drink_time'),
     # addings photoes to session
     path('drinksession/<int:session_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
+    path('profile/update/', views.ProfileUpdate.as_view(), name='profile_update')
 ]
 
 

@@ -24,15 +24,15 @@
           <li><a href="/" class="left brand-logo"><i class = "material-icons right">local_drink</i></a></li>
         </ul>
         <ul class="right">
-          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a  class = "amber-text text-lighten-2" href="{% url 'about' %}">About</a  class = "amber-text text-lighten-2"></li>
           {% if user.is_authenticated %}
-            <li><a href="{% url 'drinks_create' %}">Create Drink</a></li>
-            <li><a href="">Current Night</a></li>
-            <li><a href="{% url 'index' %}">Drink Sessions</a></li>
-            <li><a href="{% url 'logout'%}">Log Out</a></li>
+            <li><a class = "amber-text text-lighten-2" href="{% url 'drinks_create' %}">Create Drink</a></li>
+            <li><a class = "amber-text text-lighten-2" href="">Current Night</a></li>
+            <li><a class = "amber-text text-lighten-2" href="{% url 'index' %}">Drink Sessions</a></li>
+            <li><a class = "amber-text text-lighten-2" href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
-          <li><a href="{% url 'login'%}"><i class= 'material-icons right'>vpn_key</i>Log In</a></li>
-          <li><a href="{% url 'signup' %}" type='submit'
+          <li><a class = "amber-text text-lighten-2" href="{% url 'login'%}"><i class= 'material-icons right'>vpn_key</i>Log In</a></li>
+          <li><a class = "amber-text text-lighten-2" href="{% url 'signup' %}" type='submit'
             name='action'>Create an Account<i class="material-icons right">lock</i></a></li>
           {% endif %}
         </ul>
