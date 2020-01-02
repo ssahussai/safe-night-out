@@ -78,6 +78,10 @@ class ProfileCreate(CreateView):
     model = Profile
     fields = ['first_name', 'last_name','sex','weight']
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class ProfileUpdate(UpdateView):
     model = Profile
     fields = ['first_name', 'last_name','sex','weight']
