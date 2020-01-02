@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import DrinkSession, Drink, Profile
+from .models import DrinkSession, Drink, Profile, DrinkTime
 from .forms import DrinkTimeForm
 
 # Create your views here.
@@ -50,6 +50,9 @@ def drinksession_index(request):
   return render(request, 'drinksessions/index.html', {'session':session})
 
 def drinksession_detail(request, session_id):
+  print('here')
+  print(DrinkSession.objects.get(id=session_id))
+  print(DrinkSession.objects.get(id=session_id).drinktime_set.all())
   drink_time_form = DrinkTimeForm()
   return render(request, 'drinksessions/detail.html', {
     'session': DrinkSession.objects.get(id=session_id),
