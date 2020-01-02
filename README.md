@@ -10,9 +10,8 @@ Gerardo Mendoza | January 2, 2020
 Safe Night Out is a remote collaborative group project created by Alban Xhalferalli, Gerardo Mendoza, Alexander Perkowski, and Salma Khan from Austin & Dallas, TX. The purpose of this application is to do the following: 
 * Track what you drink in real time.
 * Calculate an approximate Blood Alcohol Content level.
-* Select and view Safe Methods for Getting Home.
-* Understand consequences: View alcohol-related laws in your area.
 * Build healthy drinking habits.
+* Upload pictures from your drinking sessions. 
 * Use our application to drink responsibly and get home safely.
 
 
@@ -24,9 +23,12 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
     * I see also see a navigation bar and be able to go to "About" page that tells me about the app and how to use it.
 * AAU, I want to have a user profile based on the login information. 
 * AAU, I want to add all my drinking sessions in a list.
+* AAU, I want to be able to create, update, and delete a drink. 
 * AAU, I want to be able to add new drink session and be able to edit and delete it if I change my mind later on.   
-* AAU, I want to be able to create a drink. 
 * AAU, I want to be able to upload photos from my drinking sessions. I want to see a "No Photos Uploaded" message if there are no images for the session.
+* AAU, I want to be able to calculate my Blood Alcohol Content level.
+* AAU, I want to see how drinks affect me based on my body weight, gender, or other factors.
+* AAU, I want to see a visual of my Blood Alcohol Content level.  
 
 ## Technologies Used
 * Django
