@@ -2,7 +2,7 @@
 
 Created By | Last Updated
 -----------|--------------
-Salma Khan | December 23, 2019
+Salma Khan | December 31, 2019
 Alban Xhaferllari | December 20, 2019
 Alex Perkowski | December 29, 2019
 Gerardo Mendoza | December 28, 2019
@@ -14,12 +14,17 @@ Gerardo Mendoza | December 28, 2019
 * AAU, I want to add all my drinking sessions in a list.
 * AAU, I want to be able to add new drink session and be able to edit and delete it if I change my mind later on.   
 * AAU, I want to be able to create a drink. 
+* AAU, I want to be able to upload photos from my drinking sessions. I want to see a "No Photos Uploaded" message if there are no images for the session.
 
 ## Technologies Used
 * Django
 * Python
 * PostgreSQL
 * Template Inheritance (Partials)
+* Amazong Web Services(AWS)
+* Django Authentication
+* Materialize CSS Framework
+
 
 ## Link to the deployed app
 
