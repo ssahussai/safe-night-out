@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Login page</h1>
+<div class="container">
+<h1 class="blue-text text-darken-4">Login page</h1>
+
+{% load widget_tweaks %}
+
+{% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+  {% endfor %}
+
+  {% for field in form.visible_fields %}
+    <div  class="">
+      {{ field.label_tag }}
+      {% render_field field class="validate" %}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
     <input type="submit" class="btn" value="login">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
+</div>
 
   {% endblock %}
   
