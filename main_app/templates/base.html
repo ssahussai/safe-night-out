@@ -32,6 +32,8 @@
             <li><a href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'login'%}"><i class= 'material-icons right'>vpn_key</i>Log In</a></li>
+          <li><a href="{% url 'signup' %}" type='submit'
+            name='action'>Create an Account<i class="material-icons right">lock</i></a></li>
           {% endif %}
         </ul>
       </div>
