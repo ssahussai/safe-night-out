@@ -22,6 +22,10 @@ urlpatterns = [
     path('drinks/<int:pk>/delete/', views.DrinkDelete.as_view(), name='drinks_delete'),
     # Adding drinks to session
     path('drinksession/<int:session_id>/add_drink/', views.add_drink_time, name='add_drink_time'),
+    # addings photoes to session
+    path('drinksession/<int:session_id>/add_photo/', views.add_photo, name='add_photo'),
 ]
 
+
+    
 
