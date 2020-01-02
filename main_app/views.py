@@ -69,7 +69,8 @@ def drinksession_detail(request, session_id):
   drink_time_form = DrinkTimeForm()
   return render(request, 'drinksessions/detail.html', {
     'session': DrinkSession.objects.get(id=session_id),
-    'drink_time_form': drink_time_form
+    'drink_time_form': drink_time_form,
+    'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all()
     })
 
 

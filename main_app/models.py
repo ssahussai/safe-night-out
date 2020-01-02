@@ -98,20 +98,22 @@ class DrinkSession(models.Model):
             s = self.user.profile.sex
 
         # loop through drink events and add data to bac_dict
-            for d in drink_events:
+            for i in range(len(drink_events)):
                 # append new drink
                 new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
-                bac = calc_bac(bac_list[-1][1], bac_inteval, s, w, d.drink)
+                bac = calc_bac(bac_list[-1][1], bac_inteval, s, w, drink_events[i].drink)
                 bac_list.append([new_time.time(),bac])
 
-                # countdown, reducing body's bac until user drinks again
-                while ((datetime.combine(date.min, d.time_consumed)
+                # if not user's last drink
+                if ((i+1) < len(drink_events)):
+                    # countdown, reducing body's bac until user drinks again
+                    while ((datetime.combine(date.min, drink_events[i+1].time_consumed)
                      - datetime.combine(date.min, bac_list[-1][0]))
                         > timedelta(minutes=bac_inteval)):
-                    new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
-                    bac = calc_bac(bac_list[-1][1], bac_inteval, s, w)
-                    bac = 0 if (bac<0) else bac 
-                    bac_list.append([new_time.time(),bac])
+                        new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
+                        bac = calc_bac(bac_list[-1][1], bac_inteval, s, w)
+                        bac = 0 if (bac<0) else bac 
+                        bac_list.append([new_time.time(),bac])
             #after last drink, reducing body's bac until it reaches 0 
             while (bac_list[-1][1] > 0):
                 new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
