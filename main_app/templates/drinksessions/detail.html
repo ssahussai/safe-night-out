@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class = "center blue-text text-darken-4">{{session.user}}'s details for {{session.start_time}}</h2>
+<h2 class = "center blue-text text-darken-4">{{session.user.profile.first_name}}'s details for {{session.start_time}}</h2>
 <br>
 <div class="row">
     <div class="col s6">
