@@ -2,10 +2,22 @@
 
 Created By | Last Updated
 -----------|--------------
-Salma Khan | December 31, 2019
-Alban Xhaferllari | December 20, 2019
-Alex Perkowski | December 29, 2019
-Gerardo Mendoza | December 28, 2019
+Salma Khan | January 2, 2020
+Alban Xhaferllari | January 2, 2020
+Alex Perkowski | January 2, 2020
+Gerardo Mendoza | January 2, 2020
+
+Safe Night Out is a remote collaborative group project created by Alban Xhalferalli, Gerardo Mendoza, Alexander Perkowski, and Salma Khan from Austin & Dallas, TX. The purpose of this application is to do the following: 
+* Track what you drink in real time.
+* Calculate an approximate Blood Alcohol Content level.
+* Select and view Safe Methods for Getting Home.
+* Understand consequences: View alcohol-related laws in your area.
+* Build healthy drinking habits.
+* Use our application to drink responsibly and get home safely.
+
+
+![home page](./main_app/static/images/safenightout.png)
+![details page](./main_app/static/images/drinksession.png)
 
 ## User Stories 
 * As a user (AAU), when I land in the app I should be able to see an option ether to Sign Up or Log In. 
@@ -21,7 +33,7 @@ Gerardo Mendoza | December 28, 2019
 * Python
 * PostgreSQL
 * Template Inheritance (Partials)
-* Amazong Web Services(AWS)
+* Amazon Web Services(AWS)
 * Django Authentication
 * Materialize CSS Framework
 
