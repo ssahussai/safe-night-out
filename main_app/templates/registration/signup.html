@@ -1,14 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="container" >
+<h2 class="blue-text text-darken-4">Sign Up</h2>
 
-<h2>Sign Up</h2>
+{% load widget_tweaks %}
 
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
-<form style="padding: 3vh;" method="post" action="{% url 'signup' %}">
+<form  style="padding: .5vh;" method="post" action="{% url 'signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="signup">
-</form>
+  
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+  {% endfor %}
 
+  {% for field in form.visible_fields %}
+    <div  class="input-field col s6">
+      {{ field.label_tag }}
+      {% render_field field class="validate" %}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
 {% endblock %}
