@@ -19,6 +19,11 @@
     // initialize the drink select
     var selectEl = document.getElementById('id_drink_type');
     M.FormSelect.init(selectEl);
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.getElementById('id_time_consumed');
+    var instances = M.Timepicker.init(elems, options);
+  });
 </script>
 
 

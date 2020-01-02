@@ -4,7 +4,7 @@ Created By | Last Updated
 -----------|--------------
 Salma Khan | December 31, 2019
 Alban Xhaferllari | December 20, 2019
-Alex Perkowski | December 29, 2019
+Alex Perkowski | January 2, 2020
 Gerardo Mendoza | December 28, 2019
 
 ## User Stories 
