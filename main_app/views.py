@@ -19,13 +19,6 @@ class DrinksessionCreate(CreateView):
     model = DrinkSession
     fields = ['start_time', 'duration']
 
-    def get_form(self):
-        # '''add date picker in forms'''
-        from django.forms.widgets import SelectDateWidget
-        form = super(DrinksessionCreate, self).get_form()
-        form.fields['start_time'].widget = SelectDateWidget()
-        return form
-
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -73,12 +66,6 @@ def drinksession_index(request):
 
 
 def drinksession_detail(request, session_id):
-<<<<<<< HEAD
-    drink_time_form = DrinkTimeForm()
-    return render(request, 'drinksessions/detail.html', {
-        'session': DrinkSession.objects.get(id=session_id),
-        'drink_time_form': drink_time_form
-=======
   print('here')
   print(DrinkSession.objects.get(id=session_id))
   print(DrinkSession.objects.get(id=session_id).drinktime_set.all())
@@ -86,7 +73,6 @@ def drinksession_detail(request, session_id):
   return render(request, 'drinksessions/detail.html', {
     'session': DrinkSession.objects.get(id=session_id),
     'drink_time_form': drink_time_form
->>>>>>> e9fce016a4f0efcb004bbf5a81a497427028b6a8
     })
 
 
@@ -114,10 +100,6 @@ class DrinkDetail(DetailView):
 
 
 def add_drink_time(request, session_id):
-<<<<<<< HEAD
-
-    pass
-=======
   pass
 
 
@@ -134,9 +116,3 @@ def add_photo(request, session_id):
     except:
       print('An error occured uploading file to S3')
   return redirect('detail', session_id=session_id)
-
-
-
-
-
->>>>>>> e9fce016a4f0efcb004bbf5a81a497427028b6a8
