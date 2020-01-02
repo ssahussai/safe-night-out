@@ -20,3 +20,9 @@ footer.page-footer {
 about-list {
     font-size: 100%
 }
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    order: end;
+}
