@@ -62,7 +62,8 @@ def signup(request):
 
 def drinksession_index(request):
     session = DrinkSession.objects.all()
-    return render(request, 'drinksessions/index.html', {'session': session})
+    profile = Profile.objects.filter(id=0)
+    return render(request, 'drinksessions/index.html', {'session': session, "profile": profile})
 
 
 def drinksession_detail(request, session_id):
@@ -73,6 +74,13 @@ def drinksession_detail(request, session_id):
     'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all()
     })
 
+class ProfileCreate(CreateView):
+    model = Profile
+    fields = ['first_name', 'last_name','sex','weight']
+
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['first_name', 'last_name','sex','weight']
 
 class DrinkCreate(CreateView):
     model = Drink

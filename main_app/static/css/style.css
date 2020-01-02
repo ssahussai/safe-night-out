@@ -17,6 +17,12 @@ footer.page-footer {
     text-align: right;
 }
 
-about-list {
+.about-list {
     font-size: 100%
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    order: end;
 }
