@@ -45,7 +45,7 @@ def calc_bac(curr_bac, min_passed, sex, weight, d=False):
         g_consumed = ethanol_density * vol * 29.57 * d.abv / 1000
         new_bac = g_consumed / absorb_weight * 100
         return new_bac + curr_bac
-    return curr_bac  - liver_detox_rate / (min_passed/60)
+    return curr_bac  - liver_detox_rate * 100 / (60/min_passed)
 
 
 class Profile(models.Model):
@@ -98,26 +98,28 @@ class DrinkSession(models.Model):
             s = self.user.profile.sex
 
         # loop through drink events and add data to bac_dict
-            for d in drink_events:
-                print('albani,', d.time_consumed)
-                print('albani,', bac_list[0][0])
-                print('albani,', datetime.combine(date.min, d.time_consumed) -
-                      datetime.combine(date.min, bac_list[-1][0]))
-
+            for i in range(len(drink_events)):
                 # append new drink
                 new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
-                bac = calc_bac(bac_list[-1][1], bac_inteval, s, w, d.drink)
+                bac = calc_bac(bac_list[-1][1], bac_inteval, s, w, drink_events[i].drink)
                 bac_list.append([new_time.time(),bac])
 
-                # countdown, reducing body's bac until user drinks again
-                while ((datetime.combine(date.min, d.time_consumed)
+                # if not user's last drink
+                if ((i+1) < len(drink_events)):
+                    # countdown, reducing body's bac until user drinks again
+                    while ((datetime.combine(date.min, drink_events[i+1].time_consumed)
                      - datetime.combine(date.min, bac_list[-1][0]))
                         > timedelta(minutes=bac_inteval)):
-                    new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
-                    bac = calc_bac(bac_list[-1][1], bac_inteval, s, w)
-                    bac = 0 if (bac<0) else bac 
-                    bac_list.append([new_time.time(),bac])
-
+                        new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
+                        bac = calc_bac(bac_list[-1][1], bac_inteval, s, w)
+                        bac = 0 if (bac<0) else bac 
+                        bac_list.append([new_time.time(),bac])
+            #after last drink, reducing body's bac until it reaches 0 
+            while (bac_list[-1][1] > 0):
+                new_time = datetime.combine(date.min, bac_list[-1][0]) + timedelta(minutes=bac_inteval)
+                bac = calc_bac(bac_list[-1][1], bac_inteval, s, w)
+                bac = 0 if (bac<0) else bac 
+                bac_list.append([new_time.time(),bac])
         return bac_list
 
     def __str__(self):
