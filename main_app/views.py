@@ -66,13 +66,11 @@ def drinksession_index(request):
 
 
 def drinksession_detail(request, session_id):
-  print('here')
-  print(DrinkSession.objects.get(id=session_id))
-  print(DrinkSession.objects.get(id=session_id).drinktime_set.all())
   drink_time_form = DrinkTimeForm()
   return render(request, 'drinksessions/detail.html', {
     'session': DrinkSession.objects.get(id=session_id),
-    'drink_time_form': drink_time_form
+    'drink_time_form': drink_time_form,
+    'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all()
     })
 
 
@@ -100,7 +98,13 @@ class DrinkDetail(DetailView):
 
 
 def add_drink_time(request, session_id):
-  pass
+
+    form = DrinkTimeForm(request.POST)
+    if form.is_valid():
+        new_drink_time = form.save(commit=False)
+        new_drink_time.session_id = session_id
+        new_drink_time.save()
+    return redirect('detail', session_id=session_id)
 
 
 def add_photo(request, session_id):

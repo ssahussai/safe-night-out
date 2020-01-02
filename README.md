@@ -18,6 +18,7 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
 ![home page](./main_app/static/images/safenightout.png)
 ![details page](./main_app/static/images/drinksession.png)
 
+
 ## User Stories 
 * As a user (AAU), when I land in the app I should be able to see an option ether to Sign Up or Log In. 
     * I see also see a navigation bar and be able to go to "About" page that tells me about the app and how to use it.
@@ -40,7 +41,8 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
 * Materialize CSS Framework
 
 
-## Link to the deployed app
+## Link to the deployed application in Heroku
+[Safe Night Out](http://saf3nightout.herokuapp.com/)
 
 ## Link to Trello board
 [Trello Board](https://trello.com/b/eobNgEkN/project-3)
