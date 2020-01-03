@@ -13,8 +13,6 @@ BUCKET = 'safenightout'
 
 
 # Create your views here.
-
-
 class DrinksessionCreate(CreateView):
     model = DrinkSession
     fields = ['start_time', 'duration']
@@ -77,6 +75,7 @@ def drinksession_detail(request, session_id):
 class ProfileCreate(CreateView):
     model = Profile
     fields = ['first_name', 'last_name','sex','weight']
+
 
 class ProfileUpdate(UpdateView):
     model = Profile
