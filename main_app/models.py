@@ -60,7 +60,7 @@ class Profile(models.Model):
         return f"{self.username}'s profile"
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'session_id': self.id})
+        return reverse('index')
 
 
 class Drink(models.Model):
