@@ -46,6 +46,8 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+def laws_texas(request):
+    return render(request, 'laws/texas.html')
 
 def signup(request):
     error_message = ''
