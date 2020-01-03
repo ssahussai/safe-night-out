@@ -26,7 +26,6 @@
           <li><a  class = "amber-text text-lighten-2" href="{% url 'about' %}">About</a  class = "amber-text text-lighten-2"></li>
           {% if user.is_authenticated %}
             <li><a class = "amber-text text-lighten-2" href="{% url 'drinks_create' %}">Create Drink</a></li>
-            <li><a class = "amber-text text-lighten-2" href="">Current Night</a></li>
             <li><a class = "amber-text text-lighten-2" href="{% url 'index' %}">Drink Sessions</a></li>
             <li><a class = "amber-text text-lighten-2" href="{% url 'logout'%}">Log Out</a></li>
           {% else %}
