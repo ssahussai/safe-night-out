@@ -82,7 +82,7 @@ def drinksession_detail(request, session_id):
     # this defines the type of bokeh plot
     plot = figure(plot_width=600, plot_height=300, x_axis_type="datetime", x_axis_label="time", y_axis_label="Blood Alcohol Content (BAC)")
     # this customizes the x and y axis and color of lines
-    plot.line(d1, d2,  color="blue")
+    plot.line(d1, d2,  color="blue", line_width=4)
 
     script, div = components(plot)
 
