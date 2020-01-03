@@ -17,8 +17,6 @@ BUCKET = 'safenightout'
 
 
 # Create your views here.
-
-
 class DrinksessionCreate(CreateView):
     model = DrinkSession
     fields = ['start_time', 'duration']
@@ -43,7 +41,6 @@ def home(request):
     return render(request, 'home.html', {'profile': p})
 
 # about page
-
 
 def about(request):
     return render(request, 'about.html')

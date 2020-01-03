@@ -2,10 +2,10 @@
 
 Created By | Last Updated
 -----------|--------------
-Salma Khan | January 2, 2020
-Alban Xhaferllari | January 2, 2020
-Alex Perkowski | January 2, 2020
-Gerardo Mendoza | January 2, 2020
+Salma Khan | January 3, 2020
+Alban Xhaferllari | January 3, 2020
+Alex Perkowski | January 3, 2020
+Gerardo Mendoza | January 3, 2020
 
 Safe Night Out is a remote collaborative group project created by Alban Xhalferalli, Gerardo Mendoza, Alexander Perkowski, and Salma Khan from Austin & Dallas, TX. The purpose of this application is to do the following: 
 * Track what you drink in real time.
@@ -13,10 +13,11 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
 * Build healthy drinking habits.
 * Upload pictures from your drinking sessions. 
 * Use our application to drink responsibly and get home safely.
+* Understand Texas drinking laws. 
 
 
 ![home page](./main_app/static/images/safenightout.png)
-![details page](./main_app/static/images/drinksession.png)
+![details page](./main_app/static/images/detailpage.png)
 
 
 ## User Stories 
@@ -29,7 +30,7 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
 * AAU, I want to be able to upload photos from my drinking sessions. I want to see a "No Photos Uploaded" message if there are no images for the session.
 * AAU, I want to be able to calculate my Blood Alcohol Content level.
 * AAU, I want to see how drinks affect me based on my body weight, gender, or other factors.
-* AAU, I want to see a visual of my Blood Alcohol Content level.  
+* AAU, I want to see a visual graph of my Blood Alcohol Content level.  
 
 ## Technologies Used
 * Django
@@ -39,6 +40,7 @@ Safe Night Out is a remote collaborative group project created by Alban Xhalfera
 * Amazon Web Services(AWS)
 * Django Authentication
 * Materialize CSS Framework
+* Django Template Language (DTL)
 
 
 ## Link to the deployed application in Heroku
