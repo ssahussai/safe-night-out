@@ -20,6 +20,7 @@
                     href="{% url 'drinksessions_delete' session.id %}">Delete Session</a>
                 </div>
             </div>
+            {{div| safe}}
         </div>
     {% for photo in session.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
