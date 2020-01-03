@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -63,13 +65,13 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
+@login_required 
 def drinksession_index(request):
 
     session = DrinkSession.objects.filter(user=request.user)
     return render(request, 'drinksessions/index.html', {'session': session})
 
-
+@login_required 
 def drinksession_detail(request, session_id):
 
     if (DrinkSession.objects.get(id=session_id).user != request.user):
@@ -132,7 +134,7 @@ class DrinkList(ListView):
 class DrinkDetail(DetailView):
     model = Drink
 
-
+@login_required 
 def add_drink_time(request, session_id):
 
     form = DrinkTimeForm(request.POST)
@@ -142,7 +144,7 @@ def add_drink_time(request, session_id):
         new_drink_time.save()
     return redirect('detail', session_id=session_id)
 
-
+@login_required 
 def add_photo(request, session_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
