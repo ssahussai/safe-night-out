@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class = "center blue-text text-darken-4">{{session.user}}'s details for {{session.start_time}}</h2>
+
+
+
+<h2 class = "center blue-text text-darken-4">{{session.user.profile.first_name}}'s details for {{session.start_time}}</h2>
+{% if user.profile.id %}
+<h1></h1>
+{% else %}
+<h6>Profile is needed to calculate your BAC</h6>
+<a class='btn-large waves-effect waves-light' href = "{% url 'profile_create' %}">Create my Profile</a>
+{% endif %} 
 <br>
 <div class="row">
     <div class="col s6">
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{session.start_time}}</span>
-                <p>Duration: {{ session.duration }}</p>
-                <p>Drinks: {{session.drinks}}</p>
-                <p>BAC: {{session.bac_info}}</p>
-                <p>Drink Events: {{drink_set}}</p>
+                <p>Duration: {{ session.duration }} minutes</p>
+                <br>
                 <br>
                 <br>
                 <div class = 'center row'>
@@ -21,6 +28,7 @@
                     href="{% url 'drinksessions_delete' session.id %}">Delete Session</a>
                 </div>
             </div>
+            {{div| safe}}
         </div>
     {% for photo in session.photo_set.all %}
     <img class="responsive-img card-panel" src="{{photo.url}}">
@@ -41,12 +49,36 @@
             {{ drink_time_form.as_p }}
             <input type="submit" class="btn-large" value="Add Drink Event">
         </form>
+        <br>
+
+        <h5 class = 'center blue-text text-darken-4'>This Session's Drinks</h5>
+
+        <div class="row">
+            <div class="col s24 m12">
+                {% for d in drink_set %}
+              <div class="card blue darken-4">
+                <div class="card-content white-text">
+                  <span class="card-title center">{{d.drink}}</span>
+                  <p>Effects: {{d.effects}}</p>
+                  <p>Time: {{d.time_consumed}}</p>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
     </div>
 </div>
 <script>
     // initialize the drink select
     var selectEl = document.getElementById('id_drink');
     M.FormSelect.init(selectEl);
+
+    let timeEl = document.getElementById('id_time_consumed')
+    M.Timepicker.init(timeEl, {
+      format: "HH-MM",
+      twelveHour: false,
+      autoClose: true,
+    })
 </script>
 
 {% endblock %}
