@@ -63,9 +63,9 @@ def signup(request):
 
 
 def drinksession_index(request):
-    session = DrinkSession.objects.all()
-    profile = Profile.objects.filter(id=0)
-    return render(request, 'drinksessions/index.html', {'session': session, "profile": profile})
+
+    session = DrinkSession.objects.filter(user=request.user)
+    return render(request, 'drinksessions/index.html', {'session': session})
 
 
 def drinksession_detail(request, session_id):
