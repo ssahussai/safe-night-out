@@ -54,7 +54,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/')
+            return redirect('profile_create')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()
@@ -63,45 +63,50 @@ def signup(request):
 
 
 def drinksession_index(request):
-    session = DrinkSession.objects.all()
-    profile = Profile.objects.filter(id=0)
-    return render(request, 'drinksessions/index.html', {'session': session, "profile": profile})
+
+    session = DrinkSession.objects.filter(user=request.user)
+    return render(request, 'drinksessions/index.html', {'session': session})
 
 
 def drinksession_detail(request, session_id):
-      
-  drink_time_form = DrinkTimeForm()
-  # this pulls the list of BAC every 15minutes
-  data = DrinkSession.objects.get(id=session_id).bac_info() 
-  # seperates the list of two value lists into two seperate lists
-  d1 = [item[0] for item in data]
-  d2 = [item[1] for item in data]
-  # this defines the type of bokeh plot
-  plot = figure(plot_width=400, plot_height=175, x_axis_type="datetime")
-  # this customizes the x and y axis and color of lines
-  plot.line(d1, d2,  color= "blue")
 
-  script, div = components(plot)
+    if (DrinkSession.objects.get(id=session_id).user != request.user):
+        return redirect('index')
+    drink_time_form = DrinkTimeForm()
+    # this pulls the list of BAC every 15minutes
+    data = DrinkSession.objects.get(id=session_id).bac_info()
+    # seperates the list of two value lists into two seperate lists
+    d1 = [item[0] for item in data]
+    d2 = [item[1] for item in data]
+    # this defines the type of bokeh plot
+    plot = figure(plot_width=400, plot_height=175, x_axis_type="datetime")
+    # this customizes the x and y axis and color of lines
+    plot.line(d1, d2,  color="blue")
 
-  return render(request, 'drinksessions/detail.html', {
-    'session': DrinkSession.objects.get(id=session_id),
-    'drink_time_form': drink_time_form,
-    'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all(),
-    'script': script,
-    'div': div
+    script, div = components(plot)
+
+    return render(request, 'drinksessions/detail.html', {
+        'session': DrinkSession.objects.get(id=session_id),
+        'drink_time_form': drink_time_form,
+        'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all(),
+        'script': script,
+        'div': div
     })
+
 
 class ProfileCreate(CreateView):
     model = Profile
-    fields = ['first_name', 'last_name','sex','weight']
+    fields = ['first_name', 'last_name', 'sex', 'weight']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class ProfileUpdate(UpdateView):
     model = Profile
-    fields = ['first_name', 'last_name','sex','weight']
+    fields = ['first_name', 'last_name', 'sex', 'weight']
+
 
 class DrinkCreate(CreateView):
     model = Drink
@@ -137,15 +142,16 @@ def add_drink_time(request, session_id):
 
 
 def add_photo(request, session_id):
-  photo_file = request.FILES.get('photo-file', None)
-  if photo_file: 
-    s3 = boto3.client('s3')
-    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-    try: 
-      s3.upload_fileobj(photo_file, BUCKET, key)
-      url = f"{S3_BASE_URL}{BUCKET}/{key}"
-      photo = Photo(url=url, session_id=session_id)
-      photo.save()
-    except:
-      print('An error occured uploading file to S3')
-  return redirect('detail', session_id=session_id)
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, session_id=session_id)
+            photo.save()
+        except:
+            print('An error occured uploading file to S3')
+    return redirect('detail', session_id=session_id)
