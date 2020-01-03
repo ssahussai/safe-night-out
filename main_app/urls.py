@@ -22,7 +22,8 @@ urlpatterns = [
     path('drinksession/<int:session_id>/add_drink/', views.add_drink_time, name='add_drink_time'),
     path('drinksession/<int:session_id>/add_photo/', views.add_photo, name='add_photo'),
     path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
-    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update')
+    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
+    path('laws/texas', views.laws_texas, name='laws_texas')
 ]
 
 
