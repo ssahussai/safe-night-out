@@ -15,17 +15,15 @@ urlpatterns = [
     path('drinks/', views.DrinkList.as_view(), name='drinks_index'),
     path('drinks/<int:pk>/', views.DrinkDetail.as_view(), name='drinks_detail'),
     path('drinks/create/', views.DrinkCreate.as_view(), name='drinks_create'),
-    # should we keep drink edit view? potential problem if 
-    # multiple people had same drink and getting different ABV/Effects
     path('drinks/<int:pk>/update/', views.DrinkUpdate.as_view(), name='drinks_update'),
-    # should a user be able to delete a drink? it could be in another user's drinking session
+    #might have to remove delete functionality, multiple users could use that drink
     path('drinks/<int:pk>/delete/', views.DrinkDelete.as_view(), name='drinks_delete'),
-    # Adding drinks to session
-    path('drinksession/<int:session_id>/add_drink/', views.add_drink_time, name='add_drink_time'),
     # addings photoes to session
+    path('drinksession/<int:session_id>/add_drink/', views.add_drink_time, name='add_drink_time'),
     path('drinksession/<int:session_id>/add_photo/', views.add_photo, name='add_photo'),
     path('profile/create/', views.ProfileCreate.as_view(), name='profile_create'),
-    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update')
+    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
+    path('laws/texas', views.laws_texas, name='laws_texas')
 ]
 
 
