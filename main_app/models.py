@@ -59,6 +59,9 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.username}'s profile"
 
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'session_id': self.id})
+
 
 class Drink(models.Model):
     name = models.CharField(max_length=100)
