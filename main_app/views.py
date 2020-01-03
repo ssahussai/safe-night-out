@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import DrinkSession, Drink, Profile, Photo, DrinkTime
 from .forms import DrinkTimeForm
+from bokeh.embed import components
+from bokeh.plotting import figure
 import uuid
 import boto3
 
@@ -67,11 +69,26 @@ def drinksession_index(request):
 
 
 def drinksession_detail(request, session_id):
+      
   drink_time_form = DrinkTimeForm()
+  # this pulls the list of BAC every 15minutes
+  data = DrinkSession.objects.get(id=session_id).bac_info() 
+  # seperates the list of two value lists into two seperate lists
+  d1 = [item[0] for item in data]
+  d2 = [item[1] for item in data]
+  # this defines the type of bokeh plot
+  plot = figure(plot_width=400, plot_height=175, x_axis_type="datetime")
+  # this customizes the x and y axis and color of lines
+  plot.line(d1, d2,  color= "blue")
+
+  script, div = components(plot)
+
   return render(request, 'drinksessions/detail.html', {
     'session': DrinkSession.objects.get(id=session_id),
     'drink_time_form': drink_time_form,
-    'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all()
+    'drink_set': DrinkSession.objects.get(id=session_id).drinktime_set.all(),
+    'script': script,
+    'div': div
     })
 
 class ProfileCreate(CreateView):
