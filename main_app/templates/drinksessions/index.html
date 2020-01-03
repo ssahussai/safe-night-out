@@ -3,8 +3,9 @@
 
 <h1 class = 'center blue-text text-darken-4'>Welcome back, {{user.profile.first_name}} {{user.profile.last_name}}</h1>
 
-{% if user.profile.first_name %}
-<a class='btn-large waves-effect waves-light' href = "{% url 'profile_update' %}">Update my Profile</a>
+
+{% if user.profile.first_name%}
+<a class='btn-large waves-effect waves-light' href = "{% url 'profile_update' user.profile.id  %}">Update my Profile</a>
 {% else %}
 <a class='btn-large waves-effect waves-light' href = "{% url 'profile_create' %}">Create my Profile</a>
 {% endif %} 
