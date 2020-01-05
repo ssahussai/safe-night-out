@@ -2,7 +2,7 @@
 
 Created By | Last Updated
 -----------|--------------
-Salma Khan | January 3, 2020
+Salma Khan | January 5, 2020
 Alban Xhaferllari | January 3, 2020
 Alex Perkowski | January 3, 2020
 Gerardo Mendoza | January 3, 2020
